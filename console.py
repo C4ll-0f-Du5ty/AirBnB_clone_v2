@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
     def preloop(self):
         """Prints if isatty is false"""
         if not sys.__stdin__.isatty():
-            print('(hbnb)')
+            print('(hbnb) ', end="")
 
     def precmd(self, line):
         """Reformat command line for advanced command syntax.
@@ -136,18 +136,17 @@ class HBNBCommand(cmd.Cmd):
                 # Handle float values
                 else:
                     try:
-                        value = float(value)
+                        value = int(value)
                     except ValueError:
                         try:
-                            value = int(value)
+                            value = float(value)
                         except ValueError:
                             continue
                 kwargs[key] = value
-                print(kwargs)
 
         new_instance = HBNBCommand.classes[class_name](**kwargs)
         print(new_instance.id)
-        new_instance.save()
+        storage.new(new_instance)
         storage.save()
 
     def help_create(self):
