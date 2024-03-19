@@ -10,8 +10,6 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
-from datetime import datetime
-
 
 
 class HBNBCommand(cmd.Cmd):
@@ -142,11 +140,11 @@ class HBNBCommand(cmd.Cmd):
                     except ValueError:
                         try:
                             value = int(value)
-                        except:
+                        except ValueError:
                             continue
                 kwargs[key] = value
                 print(kwargs)
-        
+
         new_instance = HBNBCommand.classes[class_name](**kwargs)
         print(new_instance.id)
         new_instance.save()
@@ -212,7 +210,7 @@ class HBNBCommand(cmd.Cmd):
         key = c_name + "." + c_id
 
         try:
-            del(storage.all()[key])
+            del (storage.all()[key])
             storage.save()
         except KeyError:
             print("** no instance found **")
@@ -344,6 +342,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

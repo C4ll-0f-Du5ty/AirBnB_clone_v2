@@ -21,7 +21,7 @@ class BaseModel:
     #                                                  '%Y-%m-%dT%H:%M:%S.%f')
     #         del kwargs['__class__']
     #         self.__dict__.update(kwargs)
-    
+
     def __init__(self, *args, **kwargs):
         self.id = str(uuid4())
         self.created_at = datetime.now()
