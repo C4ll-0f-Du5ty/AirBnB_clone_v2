@@ -25,19 +25,20 @@ Classes = {'User': User, 'State': State,
 
 
 class DBStorage:
+    """The interactions with my Database"""
     __engine = None
     __session = None
 
     def __init__(self):
-        self.__engine = create_engine('mysql+Mysqldb://{}:{}@{}/{}'
+        """the first step in the interactions process"""
+        self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
                                       .format(HBNB_MYSQL_USER, HBNB_MYSQL_PWD,
-                                              HBNB_MYSQL_HOST, HBNB_MYSQL_DB),
-                                      pool_pre_ping=True)
+                                              HBNB_MYSQL_HOST, HBNB_MYSQL_DB))
 
         if HBNB_ENV == 'test':
             Base.metadata.drop_all(self.__engine)
 
-        self.__session = scoped_session(sessionmaker(bind=self.__engine,
+        self.__session = scoped_session(sessionmaker(self.__engine,
                                                      expire_on_commit=False))
 
     def all(self, cls=None):

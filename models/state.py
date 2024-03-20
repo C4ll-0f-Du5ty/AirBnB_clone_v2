@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel
-from sqlalchemy import Column, String, int, CHAR, ForeignKey
+from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
-from engine.file_storage import FileStorage
+from models.engine.file_storage import FileStorage
 from models.city import City
 
 Base = declarative_base()
