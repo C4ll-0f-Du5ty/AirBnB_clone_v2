@@ -38,15 +38,16 @@ class DBStorage:
         if HBNB_ENV == 'test':
             Base.metadata.drop_all(self.__engine)
 
-        self.__session = scoped_session(sessionmaker(self.__engine,
-                                                     expire_on_commit=False))
-
     def all(self, cls=None):
         """Representing the Objects on A specific way"""
+        if not self.__session:
+            self.reload()
         newDict = {}
+        if type(cls) == str:
+            cls = Classes.get(cls, None)
         if cls is None:
-            for C in Classes:
-                objects = self.__session.query(C).all()
+            for C in Classes.values():
+                objects = self.__session.query(C)
                 for obj in objects:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     newDict[key] = obj
@@ -66,6 +67,8 @@ class DBStorage:
         self.__session.commit()
 
     def delete(self, obj=None):
+        if not self.__session:
+            self.reload()
         """delete from the current database session"""
         if obj is not None:
             self.__session.delete(obj)

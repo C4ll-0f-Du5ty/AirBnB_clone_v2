@@ -7,6 +7,7 @@ from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from models.engine.file_storage import FileStorage
 
 
 class State(BaseModel, Base):
@@ -17,13 +18,8 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        """getter for list of city instances related to the state"""
-        city_list = []
-        all_cities = models.storage.all(City)
-        for city in all_cities.values():
-            if city.state_id == self.id:
-                city_list.append(city)
-        return city_list
+        return [city for city in FileStorage.all(City)
+                if City.state_id == self.id]
 
     def __init__(self, *args, **kwargs):
         """initializes city"""
