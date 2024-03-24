@@ -52,7 +52,7 @@ class DBStorage:
                     key = f'{obj.__class__.__name__}.{obj.id}'
                     newDict[key] = obj
         else:
-            objects = self.__session.query(Classes[cls]).all()
+            objects = self.__session.query(cls).all()
             for obj in objects:
                 key = f'{obj.__class__.__name__}.{obj.id}'
                 newDict[key] = obj
