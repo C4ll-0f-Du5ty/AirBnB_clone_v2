@@ -13,9 +13,11 @@ class City(BaseModel, Base):
     __tablename__ = 'cities'
 
     if models.HBNB_TYPE_STORAGE == 'db':
-        state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
+        state_id = Column(String(60), ForeignKey('states.id'),
+                          nullable=False)
         name = Column(String(128), nullable=False)
-        places = relationship("Place", backref="cities", cascade="all, delete-orphan")
+        places = relationship("Place", backref="cities",
+                              cascade="all, delete-orphan")
     else:
         state_id = ""
         name = ""
