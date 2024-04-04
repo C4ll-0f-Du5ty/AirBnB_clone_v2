@@ -6,6 +6,7 @@ using the function do_pack."""
 from fabric.api import local
 import datetime
 
+
 def do_pack():
     """Function to generate a .tgz archive from web_static folder."""
     now = datetime.datetime.now()
