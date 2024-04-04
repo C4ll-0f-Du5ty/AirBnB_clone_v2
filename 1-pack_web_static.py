@@ -5,6 +5,7 @@ using the function do_pack."""
 
 from fabric.api import local
 import datetime
+import os
 
 
 def do_pack():
@@ -14,3 +15,10 @@ def do_pack():
     tarball = f"versions/web_static_{time}.tgz"
     command = f"tr -czf {tarball} web_static"
     local(command)
+
+    if os.path.isdir("versions") is False:
+        if local("mkdir -p versions").failed is True:
+            return None
+    if local(command).failed is true:
+        return None
+    return tarball
