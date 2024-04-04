@@ -19,6 +19,6 @@ def do_pack():
     if os.path.isdir("versions") is False:
         if local("mkdir -p versions").failed is True:
             return None
-    if local(command).failed is true:
+    if local(command).failed is True:
         return None
     return tarball
