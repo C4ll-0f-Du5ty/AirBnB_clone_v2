@@ -1,35 +1,36 @@
 #!/usr/bin/env bash
-# Preparing my WebServers for my App
-
-# installing The NGINX webserver
+# Sets up a web server for deployment of web_static.
 apt-get update
-apt-get install -y nginx
-
-# Making some directories
-mkdir -p /data/web_static/releases/
-mkdir -p /data/web_static/shared/
-mkdir -p /data/web_static/releases/test/
-echo "Hello Allem" >/data/web_static/releases/test/index.html
-
-# Making a Symbolic link
-ln -sf "/data/web_static/releases/test/" "/data/web_static/current"
-
-# Changing the owner of a folder and all of its contents
+apt-get -y install nginx
+mkdir /data/
+mkdir /data/web_static/
+mkdir /data/web_static/releases/
+mkdir /data/web_static/shared/
+mkdir /data/web_static/releases/test/
+echo "HELLO AIRBNB" > /data/web_static/releases/test/index.html
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
-
 printf %s "server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+    root   /var/www/html;
+    index  index.html index.htm;
 
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        add_header X-Served-By $HOSTNAME;
+    location /hbnb_static {
+        alias /data/web_static/current;
+        index index.html index.htm;
+    }
 
+    location /redirect_me {
+        return 301 http://cuberule.com/;
+    }
 
-        location /hbnb_static {
-            alias /data/web_static/current;
-            index index.html index.htm index.nginx-debian.html;
-        }
-}" >/etc/nginx/sites-available/default
+    error_page 404 /404.html;
+    location /404 {
+      root /var/www/html;
+      internal;
+    }
+}" > /etc/nginx/sites-available/default
 service nginx restart
 exit 0
