@@ -13,7 +13,7 @@ def do_pack():
     now = datetime.datetime.now()
     time = now.strftime("%Y%M%D%H%M%S")
     tarball = f"versions/web_static_{time}.tgz"
-    command = f"tr -czf {tarball} web_static"
+    command = f"tar -cvzf {tarball} web_static"
     local(command)
 
     if os.path.isdir("versions") is False:
@@ -21,4 +21,3 @@ def do_pack():
             return None
     if local(command).failed is True:
         return None
-    return tarball
