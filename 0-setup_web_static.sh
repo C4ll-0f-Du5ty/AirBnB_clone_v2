@@ -6,9 +6,11 @@ apt-get update
 apt-get install -y nginx
 
 # Making some directories
-mkdir -p /data/web_static/releases/
-mkdir -p /data/web_static/shared/
-mkdir -p /data/web_static/releases/test/
+mkdir /data/
+mkdir /data/web_static/
+mkdir /data/web_static/releases/
+mkdir /data/web_static/shared/
+mkdir /data/web_static/releases/test/
 echo "Hello Allem" >/data/web_static/releases/test/index.html
 
 # Making a Symbolic link
