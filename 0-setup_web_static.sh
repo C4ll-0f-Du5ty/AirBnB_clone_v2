@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Preparing my WebServers for my App
 
 # installing The NGINX webserver
 apt-get update
