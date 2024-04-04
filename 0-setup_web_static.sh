@@ -22,7 +22,7 @@ printf %s "server {
         listen [::]:80 default_server;
         root /var/www/html
         index index.html index.htm index.nginx-debian.html;
-        add_header X-Served-By $hostname;
+        add_header X-Served-By $HOSTNAME;
 
 
         location /hbnb_static/ {
