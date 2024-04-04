@@ -11,6 +11,6 @@ def do_pack():
     """Function to generate a .tgz archive from web_static folder."""
     now = datetime.datetime.now()
     time = now.strftime("%Y%M%D%H%M%S")
-    tarball = f"version/web_static_{time}.tgz"
+    tarball = f"versions/web_static_{time}.tgz"
     command = f"tr -czf {tarball} web_static"
     local(command)
