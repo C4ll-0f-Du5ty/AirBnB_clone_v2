@@ -11,7 +11,7 @@ import os
 def do_pack():
     """Function to generate a .tgz archive from web_static folder."""
     now = datetime.datetime.now()
-    time = now.strftime("%Y%M%D%H%M%S")
+    time = now.strftime("%Y%m%D%H%M%S")
     tarball = f"versions/web_static_{time}.tgz"
     command = f"tar -cvzf {tarball} web_static"
 
@@ -20,4 +20,3 @@ def do_pack():
             return None
     if local(command).failed is True:
         return None
-    return tarball
