@@ -8,7 +8,7 @@ from fabric.api import put, run, env
 
 def do_deploy(archive_path):
     """UnCompressing an Archive on the webserver"""
-    env.hosts = ["100.25.37.19", "54.237.57.128"]
+    env.hosts = ["54.145.156.142", "54.146.89.30"]
 
     if os.path.exists(archive_path) is False:
         return False
