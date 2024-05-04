@@ -7,6 +7,7 @@ from fabric.api import put, run, env
 
 env.hosts = ["54.145.156.142", "54.146.89.30"]
 
+
 def do_deploy(archive_path):
     """UnCompressing an Archive on the webserver"""
 
