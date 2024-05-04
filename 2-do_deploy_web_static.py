@@ -5,10 +5,10 @@ using the function do_deploy"""
 import os
 from fabric.api import put, run, env
 
+env.hosts = ["54.145.156.142", "54.146.89.30"]
 
 def do_deploy(archive_path):
     """UnCompressing an Archive on the webserver"""
-    env.hosts = ["54.145.156.142", "54.146.89.30"]
 
     if os.path.exists(archive_path) is False:
         return False
