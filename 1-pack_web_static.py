@@ -12,7 +12,7 @@ def do_pack():
     """Function to generate a .tgz archive from web_static folder."""
     d = datetime.datetime.utcnow()
     time = f"{d.year}{d.month}{d.day}{d.hour}{d.minute}{d.second}"
-    tarball = f"versions/web_static_{time}.tgz"
+    tarball = f"web_static_{time}.tgz"
     command = f"tar -cvzf {tarball} web_static"
 
     if os.path.isdir("versions") is False:
