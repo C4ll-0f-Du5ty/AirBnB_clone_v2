@@ -9,24 +9,21 @@ env.hosts = ["54.145.156.142", "54.146.89.30"]
 
 
 def do_deploy(archive_path):
-    """UnCompressing an Archive on the webserver"""
-
+    """distributes an archive to the web servers"""
     if os.path.exists(archive_path) is False:
         return False
-
     try:
-        fileName = archive_path.split("/")[-1]
-        uncompressedName = fileName.split(".")[0]
+        file_n = archive_path.split("/")[-1]
+        no_ext = file_n.split(".")[0]
         path = "/data/web_static/releases/"
-        put(archive_path, "/tmp/")
-        run(f"mkdir -p {path}{uncompressedName}")
-        run(f"tar -xvf /tmp/{fileName} -C {path}{uncompressedName}")
-        run(f"rm /tmp/{fileName}")
-        run(f"mv {path}{uncompressedName}/web_static/* "
-            "{path}{uncompressedName}/")
-        run(f"rm -rf {path}{uncompressedName}/web_static")
-        run(f"rm -rf /data/web_static/current")
-        run(f"ln -s {path}{uncompressedName}/ /data/web_static/current")
+        put(archive_path, '/tmp/')
+        run('mkdir -p {}{}/'.format(path, no_ext))
+        run('tar -xzf /tmp/{} -C {}{}/'.format(file_n, path, no_ext))
+        run('rm /tmp/{}'.format(file_n))
+        run('mv {0}{1}/web_static/* {0}{1}/'.format(path, no_ext))
+        run('rm -rf {}{}/web_static'.format(path, no_ext))
+        run('rm -rf /data/web_static/current')
+        run('ln -s {}{}/ /data/web_static/current'.format(path, no_ext))
         return True
-    except ValueError:
+    except:
         return False
