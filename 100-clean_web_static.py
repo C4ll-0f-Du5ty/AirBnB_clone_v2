@@ -10,6 +10,7 @@ env.hosts = ["54.145.156.142", "54.146.89.30"]
 
 def do_clean(number=0):
     """Removes Out-Dated Files"""
+    number = int(number)
     number = 1 if number <= 0 else number
     all_contents = sorted(os.listdir("versions"))
     all = len(all_contents)
