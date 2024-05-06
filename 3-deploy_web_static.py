@@ -51,6 +51,6 @@ def do_deploy(archive_path):
 def deploy():
     """Automate the Whole Process"""
     Name = do_pack()
-    if not Name:
+    if Name is None:
         return False
     return do_deploy(Name)
