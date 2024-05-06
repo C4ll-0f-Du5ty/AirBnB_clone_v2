@@ -13,7 +13,7 @@ def do_pack():
     d = datetime.datetime.utcnow()
     time = f"{d.year}{d.month}{d.day}{d.hour}{d.minute}{d.second}"
     tarball = f"web_static_{time}.tgz"
-    command = f"tar -cvzf {tarball} web_static"
+    command = f"tar -cvzf versions/{tarball} web_static"
 
     if os.path.isdir("versions") is False:
         if local("mkdir -p versions").failed is True:
