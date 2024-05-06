@@ -21,6 +21,5 @@ def do_clean(number=0):
         with lcd("versions"):
             [local(f"rm {file}") for file in all_contents]
         with cd("/data/web_static/releases"):
-            all_contents = [file for file in all_contents if "web_static_" in file]
-            [all_contents.pop() for i in range(number)]
+            all_contents = [f for f in all_contents if "web_static_" in f]
             [run(f"rm -rf {file}") for file in all_contents]
