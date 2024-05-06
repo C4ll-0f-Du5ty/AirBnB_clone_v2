@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Write a Fabric script (based on the file 2-do_deploy_web_static.py) that creates and distributes an archive to your web servers, using the function deploy:"""
+"""Write a Fabric script (based on the file 2-do_deploy_web_static.py)
+that creates and distributes an archive to your web servers,
+using the function deploy:"""
 
 import os
 from fabric.api import put, run, env, local
@@ -47,8 +49,8 @@ def do_deploy(archive_path):
 
 
 def deploy():
+    """Automate the Whole Process"""
     Name = do_pack()
     if not Name:
         return False
     return do_deploy(Name)
-
