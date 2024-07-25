@@ -24,9 +24,10 @@ def Display_C(text):
 
 
 @app.route("/python/<text>", strict_slashes=False)
+@app.route("/python/", strict_slashes=False)
 def Display_Python(text="is cool"):
     """Displaying my Fourth Page"""
-    return f"C {text.replace('_', ' ')}"
+    return f"Python {text.replace('_', ' ')}"
 
 
 if __name__ == "__main__":
