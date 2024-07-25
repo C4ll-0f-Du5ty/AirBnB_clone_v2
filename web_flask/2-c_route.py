@@ -12,15 +12,15 @@ def Hello():
 
 
 @app.route("/hbnb", strict_slashes=False)
-def Hello1():
+def HelloHBNB():
     """Displaying my second Sentence"""
     return "HBNB"
 
 @app.route("/c/<text>", strict_slashes=False)
-def Hello1(text):
+def Display_C(text):
     """Displaying my third Sentence"""
-    
-    return f"C {text.replace("_", " ")}"
+    mod = text.replace("_", " ")
+    return f"C {mod}"
 
 
 if __name__ == "__main__":
