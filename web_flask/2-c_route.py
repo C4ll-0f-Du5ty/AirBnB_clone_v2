@@ -7,18 +7,19 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def Hello():
-    """Displaying My first sentence"""
+    """Displaying My first Page"""
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
 def HelloHBNB():
-    """Displaying my second Sentence"""
+    """Displaying my second Page"""
     return "HBNB"
+
 
 @app.route("/c/<text>", strict_slashes=False)
 def Display_C(text):
-    """Displaying my third Sentence"""
+    """Displaying my third Page"""
     mod = text.replace("_", " ")
     return f"C {mod}"
 

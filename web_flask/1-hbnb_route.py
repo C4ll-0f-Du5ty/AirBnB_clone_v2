@@ -7,13 +7,13 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def Hello():
-    """Displaying My first sentence"""
+    """Displaying My first page"""
     return "Hello HBNB!"
 
 
 @app.route("/hbnb", strict_slashes=False)
 def Hello1():
-    """Displaying my second Sentence"""
+    """Displaying my second page"""
     return "HBNB"
 
 
