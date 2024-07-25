@@ -20,8 +20,7 @@ def HelloHBNB():
 @app.route("/c/<text>", strict_slashes=False)
 def Display_C(text):
     """Displaying my third Page"""
-    mod = text.replace("_", " ")
-    return f"C {mod}"
+    return f"C {text.replace('_', ' ')}"
 
 
 if __name__ == "__main__":
