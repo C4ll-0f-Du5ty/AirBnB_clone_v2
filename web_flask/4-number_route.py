@@ -29,6 +29,7 @@ def Display_Python(text="is cool"):
     """Displaying my Fourth Page"""
     return f"Python {text.replace('_', ' ')}"
 
+
 @app.route("/number/<int:text>", strict_slashes=False)
 def Display_Number(text):
     """Displaying my Fourth Page"""
