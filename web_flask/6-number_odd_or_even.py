@@ -49,8 +49,9 @@ def Display_State(text):
     if text % 2 == 0:
         state = "even"
     else:
-        state= "odd"
-    return render_template("5-number.html", Number=text, State=state)
+        state = "odd"
+    return render_template("6-number_odd_or_even.html",
+                           Number=text, State=state)
 
 
 if __name__ == "__main__":
