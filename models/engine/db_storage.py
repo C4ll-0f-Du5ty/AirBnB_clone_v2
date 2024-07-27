@@ -81,4 +81,4 @@ class DBStorage:
                                                      expire_on_commit=False))
 
     def close(self):
-        self.remove(self.__session)
+        self.__session.remove()
