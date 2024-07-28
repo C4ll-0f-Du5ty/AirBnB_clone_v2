@@ -10,12 +10,14 @@ myData = storage.all()
 
 @app.route("/states_list", strict_slashes=False)
 def Display_states():
+    """Display States by name"""
     States = storage.all("State")
     return render_template("7-states_list.html", States=States)
 
 
 @app.teardown_appcontext
 def tear():
+    """Closes the current sqlAlchemy session"""
     storage.close()
 
 
