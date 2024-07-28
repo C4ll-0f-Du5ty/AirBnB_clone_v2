@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 myData = storage.all()
 
+
 @app.route("/states_list", strict_slashes=False)
 def Display_states():
     States = storage.all("State")
