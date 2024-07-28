@@ -1,27 +1,21 @@
 #!/usr/bin/python3
-"""App 2"""
-from flask import Flask
+from flask import Flask, render_template
+import sys
+from pathlib import Path
+
+# Dynamically add the parent directory of 'flask' and 'models' to the Python path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 app = Flask(__name__)
 
+from models import storage
 
-@app.route("/", strict_slashes=False)
-def Hello():
-    """Displaying My first Page"""
-    return "Hello HBNB!"
+# @app.route("/states_list", strict_slashes=False)
 
-
-@app.route("/hbnb", strict_slashes=False)
-def HelloHBNB():
-    """Displaying my second Page"""
-    return "HBNB"
+print(storage.all())
 
 
-@app.route("/c/<text>", strict_slashes=False)
-def Display_C(text):
-    """Displaying my third Page"""
-    return f"C {text.replace('_', ' ')}"
 
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+# if __name__ == "__main__":
+#     app.run(host='0.0.0.0', port=5000)

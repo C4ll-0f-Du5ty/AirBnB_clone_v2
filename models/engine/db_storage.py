@@ -39,7 +39,7 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Representing the Objects on A specific way"""
+        """Returns a dictionary of the data in my Database"""
         if not self.__session:
             self.reload()
         newDict = {}
