@@ -14,7 +14,7 @@ def Display_states():
 
 
 @app.route("/cities_by_states", strict_slashes=False)
-def Display_states():
+def Display_statesByCities():
     """Display States by name"""
     States = storage.all("State")
     sorted_States = sorted(States.values(), key=lambda state: state.name)
