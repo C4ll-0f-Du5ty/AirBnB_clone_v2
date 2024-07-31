@@ -11,8 +11,12 @@ def Display_states():
     """Display States by name"""
     States = storage.all("State")
     sorted_States = sorted(States.values(), key=lambda state: state.name)
-
-    return render_template("8-cities_by_states.html", States=sorted_States)
+    from models.amenity import Amenity
+    # Assuming `session` is your SQLAlchemy session
+    amenities = storage.all(Amenity)
+    
+    print(amenities)
+    return amenities
 
 
 @app.teardown_appcontext
